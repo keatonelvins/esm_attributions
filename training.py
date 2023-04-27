@@ -5,7 +5,6 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import torch
 from transformers import TrainingArguments, Trainer, EarlyStoppingCallback
 from transformers import EsmTokenizer, EsmForSequenceClassification
-from transformers.integrations import TensorBoardCallback
 
 
 # Read data
@@ -75,7 +74,7 @@ trainer = Trainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     compute_metrics=compute_metrics,
-    callbacks=[EarlyStoppingCallback(early_stopping_patience=3), TensorBoardCallback()],
+    callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
 )
 
 # Train pre-trained model
